@@ -1,3 +1,4 @@
+import 'package:aplicacio_tasques_2425/components/dialog_nova_tasca.dart';
 import 'package:aplicacio_tasques_2425/components/item_tasca.dart';
 import 'package:flutter/material.dart';
 
@@ -27,6 +28,15 @@ class _PaginaPrincipalState extends State<PaginaPrincipal> {
     });
   }
 
+  void crearNovaTasca() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return const DialogNovaTasca();
+      }
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,7 +53,7 @@ class _PaginaPrincipalState extends State<PaginaPrincipal> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.teal[300],
         shape: const CircleBorder(),
-        onPressed: () {},
+        onPressed: crearNovaTasca,
         child: Icon(
           Icons.add,
           color: Colors.orange[200],
