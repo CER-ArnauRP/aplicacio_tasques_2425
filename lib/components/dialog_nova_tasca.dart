@@ -2,7 +2,16 @@ import 'package:aplicacio_tasques_2425/components/boto_dialog.dart';
 import 'package:flutter/material.dart';
 
 class DialogNovaTasca extends StatelessWidget {
-  const DialogNovaTasca({super.key});
+  final TextEditingController tecTextTasca;
+  final Function()? accioGuardar;
+  final Function()? accioCancelar;
+
+  const DialogNovaTasca({
+    super.key,
+    required this.tecTextTasca,
+    required this.accioGuardar,
+    required this.accioCancelar,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -12,19 +21,31 @@ class DialogNovaTasca extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       content: Container(
-        height: 200,
+        height: 150,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            TextField(),
+            TextField(
+              controller: tecTextTasca,
+              cursorColor: Colors.orange[300],
+              decoration: InputDecoration(
+                hintText: "Escriu la tasca...",
+                border: OutlineInputBorder(),
+                filled: true,
+                fillColor: Colors.teal[100],
+              ),
+            ),
+            //SizedBox(height: 10,),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 BotoDialog(
                   textBoto: "Guardar",
-                  accioBoto: () {},
+                  accioBoto: accioGuardar,
                 ), // Botó guardar.
                 BotoDialog(
                   textBoto: "Cancelar",
-                  accioBoto: () {},
+                  accioBoto: accioCancelar,
                 ), // Botó cancelar.
               ],
             )
